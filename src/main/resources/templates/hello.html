@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--声明使用的是thymeleaf语法-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello</title>
+</head>
+<body>
+<h1 th:text="${message}">Hello world</h1>
+<p th:text="${userName}">benson</p>
+<span th:text="'Welcome to my home, ' + ${userName} + '!'"></span>
+</br>
+<span th:text="|Welcome to my home, ${userName}!|"></span>
+
+<h1>If/Unless</h1>
+<a th:if="${flag == 'yes'}"  th:href="@{http://favorites.ren/}"> home </a>
+<br/>
+<a th:unless="${flag != 'no'}" th:href="@{http://www.ityouknow.com/}" >ityouknow</a>
+<table>
+    <tr  th:each="user,iterStat : ${users}">
+        <td th:text="${user.name}">neo</td>
+        <td th:text="${user.age}">6</td>
+        <td th:text="${user.pass}">213</td>
+        <td th:text="${iterStat.index}">index</td>
+    </tr>
+</table>
+<a  th:href="@{http://www.ityouknow.com/{type}(type=${type})}">link1</a>
+<br/>
+<a th:href="@{http://www.ityouknow.com/{pageId}/can-use-springcloud.html(pageId=${pageId})}">view</a>
+<br/>
+<div th:style="'background:url('+@{${img}}+');'"></div>
+
+</body>
+</html>
